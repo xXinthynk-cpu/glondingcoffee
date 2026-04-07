@@ -5,31 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glinding Kopi</title>
 
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;font-family:Arial;background:#0e0e0e;color:#fff}
-section{padding:80px 20px;max-width:1100px;margin:auto}
-h1,h2,h3{margin:0}
-button{padding:12px 20px;border:none;background:#c59d5f;color:#000;font-weight:bold;cursor:pointer}
+body{margin:0;font-family:'Poppins',sans-serif;background:#0e0e0e;color:#fff}
+section{padding:100px 20px;max-width:1100px;margin:auto}
+h1{font-size:3em}
+h2{font-size:2em;margin-bottom:20px}
+p{opacity:0.8;line-height:1.6}
+button{padding:12px 24px;border:none;background:#c59d5f;color:#000;font-weight:600;cursor:pointer;border-radius:5px;transition:.3s}
+button:hover{opacity:.8}
 
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover}
-.hero h1{font-size:3em;background:rgba(0,0,0,0.6);padding:20px}
+/* HERO */
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover no-repeat}
+.hero .overlay{background:rgba(0,0,0,0.7);padding:40px;border-radius:10px}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{background:#1a1a1a;padding:20px;border-radius:10px}
-
-.story{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+/* STORY */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .story img{width:100%;border-radius:10px}
 
-.social a{display:inline-block;margin:10px;color:#c59d5f;text-decoration:none}
+/* PRODUCT */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#1a1a1a;padding:20px;border-radius:10px;transition:.3s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;border-radius:10px}
 
+/* CHAT */
 .chat-box{background:#1a1a1a;padding:20px;border-radius:10px}
-.chat-messages{height:150px;overflow:auto;margin-bottom:10px;background:#000;padding:10px}
-input,textarea{width:100%;padding:10px;margin-top:10px;border:none}
+.chat-messages{height:200px;overflow:auto;background:#000;padding:10px;margin-bottom:10px}
+input,textarea{width:100%;padding:10px;margin-top:10px;border:none;border-radius:5px}
 
-@media(max-width:768px){
-.story{grid-template-columns:1fr}
-.hero h1{font-size:2em}
-}
+/* SOCIAL */
+.social a{margin:10px;color:#c59d5f;text-decoration:none}
+
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(40px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){.story{grid-template-columns:1fr}}
 </style>
 </head>
 
@@ -37,60 +51,58 @@ input,textarea{width:100%;padding:10px;margin-top:10px;border:none}
 
 <!-- HERO -->
 <section class="hero">
-<div>
-<h1>From Balun. For the World.</h1>
-<p>Glinding Kopi</p>
+<div class="overlay">
+<h1 contenteditable="true">From Balun. For the World.</h1>
+<p contenteditable="true">Glinding Kopi</p>
 <button onclick="scrollToSection('produk')">Order Now</button>
 </div>
 </section>
 
 <!-- STORY -->
-<section class="story">
-<img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e">
+<section class="story fade">
+<img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e" onclick="changeImage(event,this)">
 <div>
-<h2>Cerita Kami</h2>
-<p>Glinding Kopi lahir dari Desa Balun, Wanayasa. Dari tempat sederhana dengan mimpi besar. Kami percaya sesuatu yang besar bisa datang dari tempat kecil.</p>
+<h2 contenteditable="true">Cerita Kami</h2>
+<p contenteditable="true">Glinding Kopi lahir dari Desa Balun, sebuah desa kecil di Wanayasa, Banjarnegara.
+Tempat di mana pagi datang dengan dingin yang jujur, dan kehidupan berjalan dengan sederhana—tapi penuh makna.
+Di sini, kopi bukan sekadar minuman. Ia adalah bagian dari perjalanan. Tentang tangan yang bekerja, langkah yang terus maju, dan mimpi yang tumbuh, bahkan dari tempat yang sering dianggap kecil.
+“Glinding” berarti bulat. Sebuah simbol dari rasa yang utuh, dan perjalanan hidup yang terus berputar. Kadang di atas, kadang di bawah. Tapi tidak pernah berhenti.
+Kami percaya, sesuatu yang besar tidak selalu lahir dari tempat yang besar.
+Dari Desa Balun, kami membawa lebih dari sekadar kopi. Kami membawa cerita. Tentang asal-usul, tentang proses, dan tentang mereka yang terus berjalan—meski sendirian.
+Setiap biji kopi yang kami olah adalah hasil dari perjalanan panjang. Dipilih dengan hati, diproses dengan kesabaran, dan disajikan dengan satu tujuan: menghadirkan rasa yang jujur.
+Glinding Kopi bukan hanya tentang apa yang kamu minum.
+Ini tentang dari mana kamu berasal… dan sejauh mana kamu berani melangkah.
+Dari Balun, untuk dunia yang lebih luas.
+</p>
 </div>
 </section>
 
 <!-- PRODUK -->
-<section id="produk">
-<h2>Produk Kami</h2>
-<div class="grid">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" width="100%">
-<h3>Arabica Gayo</h3>
-<p>Rp 75.000</p>
-<button>Beli</button>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0" width="100%">
-<h3>Robusta Lampung</h3>
-<p>Rp 55.000</p>
-<button>Beli</button>
-</div>
-</div>
+<section id="produk" class="fade">
+<h2 contenteditable="true">Produk Kami</h2>
+<div class="grid" id="productList"></div>
+<button onclick="addProduct()">+ Tambah Produk</button>
 </section>
 
-<!-- INTERAKSI OWNER -->
-<section>
+<!-- CHAT -->
+<section class="fade">
 <h2>Ngobrol Langsung</h2>
 <div class="chat-box">
 <div class="chat-messages" id="chat"></div>
-<input type="text" id="name" placeholder="Nama kamu">
-<textarea id="message" placeholder="Tulis pesan..."></textarea>
+<input id="name" placeholder="Nama">
+<textarea id="message" placeholder="Pesan"></textarea>
 <button onclick="sendMessage()">Kirim</button>
 </div>
 </section>
 
 <!-- CTA -->
-<section>
-<h2>Not just coffee. It's a journey.</h2>
+<section class="fade">
+<h2 contenteditable="true">Not just coffee. It's a journey.</h2>
 <button onclick="window.open('https://wa.me/628123456789')">Order via WhatsApp</button>
 </section>
 
 <!-- SOCIAL -->
-<section class="social">
+<section class="social fade">
 <h2>Follow Kami</h2>
 <a href="#">WhatsApp</a>
 <a href="#">Instagram</a>
@@ -100,24 +112,89 @@ input,textarea{width:100%;padding:10px;margin-top:10px;border:none}
 </section>
 
 <script>
-function scrollToSection(id){
- document.getElementById(id).scrollIntoView({behavior:'smooth'});
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+
+// EDIT IMAGE
+function changeImage(e,img){
+ let input=document.createElement('input');
+ input.type='file';
+ input.onchange=ev=>{
+  let file=ev.target.files[0];
+  img.src=URL.createObjectURL(file);
+ };
+ input.click();
 }
 
+// PRODUCT SYSTEM
+let products=JSON.parse(localStorage.getItem('products'))||[
+ {name:'Arabica Gayo',price:75000,img:'https://images.unsplash.com/photo-1511920170033-f8396924c348'},
+ {name:'Robusta Lampung',price:55000,img:'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0'}
+];
+
+function renderProducts(){
+ let html='';
+ products.forEach((p,i)=>{
+  html+=`<div class="card">
+  <img src="${p.img}" onclick="changeProductImage(${i})">
+  <h3 contenteditable oninput="editProduct(${i},'name',this.innerText)">${p.name}</h3>
+  <p contenteditable oninput="editProduct(${i},'price',this.innerText)">Rp ${p.price}</p>
+  <button onclick="buyWA('${p.name}',${p.price})">Beli</button>
+  </div>`;
+ });
+ document.getElementById('productList').innerHTML=html;
+ localStorage.setItem('products',JSON.stringify(products));
+}
+
+function addProduct(){
+ products.push({name:'Produk Baru',price:0,img:''});
+ renderProducts();
+}
+
+function editProduct(i,key,val){
+ products[i][key]=val;
+ localStorage.setItem('products',JSON.stringify(products));
+}
+
+function changeProductImage(i){
+ let input=document.createElement('input');
+ input.type='file';
+ input.onchange=e=>{
+  products[i].img=URL.createObjectURL(e.target.files[0]);
+  renderProducts();
+ };
+ input.click();
+}
+
+function buyWA(name,price){
+ window.open(`https://wa.me/628123456789?text=Order%20${name}%20Rp%20${price}`);
+}
+
+// CHAT SYSTEM
 function sendMessage(){
  let name=document.getElementById('name').value;
- let message=document.getElementById('message').value;
- if(name && message){
+ let msg=document.getElementById('message').value;
+ if(name&&msg){
   let chat=document.getElementById('chat');
-  chat.innerHTML+=`<p><b>${name}:</b> ${message}</p>`;
+  chat.innerHTML+=`<p><b>${name}:</b> ${msg}</p>`;
   localStorage.setItem('chat',chat.innerHTML);
-  document.getElementById('message').value='';
  }
 }
 
-window.onload=function(){
+// LOAD
+window.onload=()=>{
+ renderProducts();
  document.getElementById('chat').innerHTML=localStorage.getItem('chat')||'';
 }
+
+// ANIMATION
+let sections=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+ sections.forEach(sec=>{
+  if(sec.getBoundingClientRect().top<window.innerHeight-100){
+   sec.classList.add('show');
+  }
+ });
+});
 </script>
 
 </body>
