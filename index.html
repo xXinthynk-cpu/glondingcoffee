@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glinding Kopi</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#0e0e0e;color:#fff}
+section{padding:80px 20px;max-width:1100px;margin:auto}
+h1,h2,h3{margin:0}
+button{padding:12px 20px;border:none;background:#c59d5f;color:#000;font-weight:bold;cursor:pointer}
+
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover}
+.hero h1{font-size:3em;background:rgba(0,0,0,0.6);padding:20px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#1a1a1a;padding:20px;border-radius:10px}
+
+.story{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.story img{width:100%;border-radius:10px}
+
+.social a{display:inline-block;margin:10px;color:#c59d5f;text-decoration:none}
+
+.chat-box{background:#1a1a1a;padding:20px;border-radius:10px}
+.chat-messages{height:150px;overflow:auto;margin-bottom:10px;background:#000;padding:10px}
+input,textarea{width:100%;padding:10px;margin-top:10px;border:none}
+
+@media(max-width:768px){
+.story{grid-template-columns:1fr}
+.hero h1{font-size:2em}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+<h1>From Balun. For the World.</h1>
+<p>Glinding Kopi</p>
+<button onclick="scrollToSection('produk')">Order Now</button>
+</div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+<img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e">
+<div>
+<h2>Cerita Kami</h2>
+<p>Glinding Kopi lahir dari Desa Balun, Wanayasa. Dari tempat sederhana dengan mimpi besar. Kami percaya sesuatu yang besar bisa datang dari tempat kecil.</p>
+</div>
+</section>
+
+<!-- PRODUK -->
+<section id="produk">
+<h2>Produk Kami</h2>
+<div class="grid">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" width="100%">
+<h3>Arabica Gayo</h3>
+<p>Rp 75.000</p>
+<button>Beli</button>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0" width="100%">
+<h3>Robusta Lampung</h3>
+<p>Rp 55.000</p>
+<button>Beli</button>
+</div>
+</div>
+</section>
+
+<!-- INTERAKSI OWNER -->
+<section>
+<h2>Ngobrol Langsung</h2>
+<div class="chat-box">
+<div class="chat-messages" id="chat"></div>
+<input type="text" id="name" placeholder="Nama kamu">
+<textarea id="message" placeholder="Tulis pesan..."></textarea>
+<button onclick="sendMessage()">Kirim</button>
+</div>
+</section>
+
+<!-- CTA -->
+<section>
+<h2>Not just coffee. It's a journey.</h2>
+<button onclick="window.open('https://wa.me/628123456789')">Order via WhatsApp</button>
+</section>
+
+<!-- SOCIAL -->
+<section class="social">
+<h2>Follow Kami</h2>
+<a href="#">WhatsApp</a>
+<a href="#">Instagram</a>
+<a href="#">TikTok</a>
+<a href="#">YouTube</a>
+<a href="#">Facebook</a>
+</section>
+
+<script>
+function scrollToSection(id){
+ document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function sendMessage(){
+ let name=document.getElementById('name').value;
+ let message=document.getElementById('message').value;
+ if(name && message){
+  let chat=document.getElementById('chat');
+  chat.innerHTML+=`<p><b>${name}:</b> ${message}</p>`;
+  localStorage.setItem('chat',chat.innerHTML);
+  document.getElementById('message').value='';
+ }
+}
+
+window.onload=function(){
+ document.getElementById('chat').innerHTML=localStorage.getItem('chat')||'';
+}
+</script>
+
+</body>
+</html>
